@@ -28,6 +28,9 @@ code_signals:
 risk_signals:
 read_when:
 read_also:
+source_sections:
+verified_at:
+references:
 ```
 
 ## 필드별 작성 기준
@@ -44,6 +47,9 @@ read_also:
 | `risk_signals` | 장애/성능/정합성 위험 신호                              |
 | `read_when`    | 이 문서를 읽어야 하는 조건                              |
 | `read_also`    | 함께 읽을 문서 ID 목록. `DBA-XXX` 형식                  |
+| `source_sections` | 편입하거나 병합한 원문 범위. `raw/N.md:시작-끝` 형식 |
+| `verified_at`  | 변할 수 있는 사실을 공식 자료로 확인한 날짜. `YYYY-MM-DD` |
+| `references`   | 최신성 검증에 사용한 공식 문서 URL 목록                 |
 | `summary`      | 2~4문장 요약. 한 번에 요점을 건지도록 작성              |
 
 ## 작성 규칙
@@ -54,6 +60,8 @@ read_also:
 - `applies_to`: 아래 어휘 중 해당하는 것만. 상황에 따라 겹치게 선택할 수 있다.
 - `risk_signals`: 나쁜 판단이자 코드에서 보면 위험한 신호를 서술한다.
 - `summary`: markdown의 `>` 블록 스칼라로 2~4문장. 마침표로 끝나고 첫 필드명과 들여쓰기를 지킨다.
+- `source_sections`: 원문 계보가 있는 경우에만 기록한다. 중복 원문은 기준 문서에 `(축약 중복)` 또는 `(표현 차이가 있는 중복)`으로 표시할 수 있다.
+- `verified_at`, `references`: 버전, 제한, 가격, 지원 기능처럼 바뀌는 사실이 있으면 함께 기록한다. 공식 문서를 우선한다.
 
 ## applies_to 어휘
 
@@ -79,6 +87,8 @@ read_also:
 | `cache-design`             | 캐시 설계                                |
 | `event-design`             | 이벤트/메시지 아키텍처                   |
 | `analytics`                | 분석 쿼리, 데이터 웨어하우스             |
+| `technical-interview`      | 기술 면접 준비와 판단 근거 설명           |
+| `career-documentation`     | 이력서, 경력기술서, 성과 표현             |
 
 ## 작성 예시
 

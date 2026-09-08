@@ -1,21 +1,21 @@
 # dba-knowledge
 
-DB 설계, 스키마, 인덱스, 쿼리, 트랜잭션, 락, 백업, 캐시, 메시지, ORM, 마이그레이션, 운영 DDL, 대용량 데이터, 장애 대응을 다루는 지식 베이스 스킬이다. 38개 문서가 11개 도메인 섹션으로 구성되어 있고, 질문에 맞는 문서를 라우팅해 출처(`DBA-XXX`)와 함께 답하게 한다.
+DB 설계, 스키마, 인덱스, 쿼리, 트랜잭션, 락, 백업, 캐시, 메시지, ORM, 마이그레이션, 운영 DDL, 대용량 데이터, 장애 대응, 기술 선택과 DB 직무 성장을 다루는 지식 베이스 스킬이다. 55개 문서가 12개 섹션으로 구성되어 있고 질문에 맞는 문서를 라우팅해 출처(`DBA-XXX`)와 함께 답하게 한다.
 
 ## 구성
 
 ```text
 dba-knowledge/
 ├── SKILL.md             # 에이전트 진입점
-├── knowledge-map.md     # 11개 섹션 라우팅 지도
+├── knowledge-map.md     # 12개 섹션 라우팅 지도
 ├── retrieval-guide.md   # 조회 절차
 ├── metadata-schema.md   # frontmatter 규칙
-├── document-index.md    # DBA-XXX ID 매핑표 (38개)
-├── raw/                 # 이관한 원문 5개
-└── annotated/           # 스킬용 지식 문서 38개
+├── document-index.md    # DBA-XXX ID 매핑표 (55개)
+├── raw/                 # 원문 7개, 변경하지 않는 계보 자료
+└── annotated/           # 스킬용 지식 문서 55개
 ```
 
-문서 ID는 `DBA-001`부터 `DBA-038`, `document-index.md`와 1:1이다.
+문서 ID는 `DBA-001`부터 `DBA-054`, 그리고 직무 성장 문서 `DBA-999`이며 `document-index.md`와 1:1이다.
 `raw/`는 원문 계보를 보존하는 경로이며 실제 질문 라우팅에는 사용하지 않는다.
 
 ## 에이전트별 설치
@@ -41,3 +41,4 @@ dba-knowledge/
 - 질문에 답할 때는 `annotated/`를 읽기 전용으로 사용하고 `raw/`를 근거로 사용하지 않는다.
 - 스킬 문서를 추가하거나 갱신할 때는 `annotated/`에 직접 반영한다.
 - 새 문서 추가는 `metadata-schema.md`의 frontmatter 규칙을 따르고, `document-index.md`에 ID를 고정해 등록한다.
+- 버전, 가격, 제한과 지원 기능은 `verified_at`과 공식 `references`를 기록하고 답변 시점에 다시 확인한다.

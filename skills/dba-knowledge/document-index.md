@@ -1,6 +1,6 @@
 # DBA Knowledge Base 문서 인덱스
 
-`annotated/` 아래 38개 문서의 파일 번호와 문서 ID를 1:1로 고정한 매핑표다.
+`annotated/` 아래 55개 문서의 파일 번호와 문서 ID를 1:1로 고정한 매핑표다.
 ID는 이후 절대 변경하지 않는다.
 
 | id      | file                                                                     | title                                                                                        |
@@ -43,9 +43,26 @@ ID는 이후 절대 변경하지 않는다.
 | DBA-036 | annotated/036-푸시-알림이-DB에-주는-영향.md                              | 푸시 알림이 DB에 주는 영향: 1000만 명에게 쿠폰을 보내면 생기는 일                            |
 | DBA-037 | annotated/037-크롤링이-DB에-주는-영향.md                                 | 크롤링이 DB에 주는 영향: 검색엔진이 서비스를 죽이는 순간                                     |
 | DBA-038 | annotated/038-왜-분석-쿼리는-RDBMS에서-느린가.md                         | 왜 분석 쿼리는 RDBMS에서 느린가: Athena, Snowflake, BigQuery의 구조                          |
+| DBA-039 | annotated/039-인조키를-알고-써야-한다.md                                 | 인조키를 알고 써야 한다: DB의 특성에 따라 달라지는 키 전략                                  |
+| DBA-040 | annotated/040-데이터베이스-OOM의-실체.md                                 | 데이터베이스 OOM의 실체: t4g.medium이 자꾸 재부팅되는 이유                                  |
+| DBA-041 | annotated/041-Soft-Delete-vs-Hard-Delete.md                              | Soft Delete vs Hard Delete: 지우는 척하면 인덱스가 망가진다                                 |
+| DBA-042 | annotated/042-레플리케이션과-페일오버.md                                 | 레플리케이션과 페일오버: 복제는 쉬운데 전환은 왜 어려운가                                   |
+| DBA-043 | annotated/043-Load-Average와-AAS.md                                      | Load Average와 AAS: DB 부하를 읽는 두 개의 눈금                                             |
+| DBA-044 | annotated/044-주문-테이블-설계.md                                        | 주문 테이블 설계: orders 하나로 시작하면 첫 환불에서 깨진다                                 |
+| DBA-045 | annotated/045-로그인이-DB에-주는-영향.md                                 | 로그인이 DB에 주는 영향: 출근 시간에 서버가 느려지는 이유                                   |
+| DBA-046 | annotated/046-SQL과-NoSQL-선택-기준.md                                   | SQL과 NoSQL: 정답 대신 요구사항으로 선택하는 법                                             |
+| DBA-047 | annotated/047-MySQL-vs-PostgreSQL.md                                     | MySQL vs PostgreSQL: 뭘 고르든 후회하는 이유                                                |
+| DBA-048 | annotated/048-JPA와-MyBatis.md                                           | JPA와 MyBatis: 프레임워크가 아니라 철학의 차이다                                            |
+| DBA-049 | annotated/049-Aurora-vs-RDS.md                                           | Aurora vs RDS: 비싸도 Aurora를 써야 하는 순간                                               |
+| DBA-050 | annotated/050-JSON을-잘-쓴다는-것.md                                     | JSON을 잘 쓴다는 것: 구조, 네이밍, 흔한 실수                                                |
+| DBA-051 | annotated/051-Netflix가-Cassandra를-선택한-이유.md                        | Netflix: 초당 백만 쓰기가 Cassandra를 선택한 이유                                           |
+| DBA-052 | annotated/052-RocksDB.md                                                  | RocksDB: DB를 만드는 사람들이 선택한 엔진                                                   |
+| DBA-053 | annotated/053-Supabase에서-자체-DB로-전환하기.md                          | Supabase에서 자체 DB로 넘어가야 할 때는 언제인가?                                           |
+| DBA-054 | annotated/054-MongoDB-설계-패턴.md                                       | MongoDB 설계 패턴: 도메인이 구조를 결정한다                                                 |
+| DBA-999 | annotated/999-DB-전문가의-성장과-커뮤니케이션.md                          | DB 전문가의 성장과 커뮤니케이션: 학습, 면접, 이력서                                         |
 
 ## 안내
 
-- 38개 문서는 모두 `annotated/` 아래에 있고 frontmatter를 갖는다.
+- 55개 문서는 모두 `annotated/` 아래에 있고 frontmatter를 갖는다.
 - AI가 문서를 읽을 때는 frontmatter가 있는 `annotated/`의 파일을 우선 읽는다.
 - 문서를 검색할 때는 `knowledge-map.md`의 라우팅을 먼저 따른다.
