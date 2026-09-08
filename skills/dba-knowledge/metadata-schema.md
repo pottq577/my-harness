@@ -6,7 +6,7 @@
 
 - frontmatter는 문서 최상단에 `---`로 감싼 YAML 블록으로 둔다.
 - 각 문서는 `document-index.md`에 고정된 ID를 가진다. ID는 절대 변경하지 않는다.
-- `annotated/`의 문서는 지식 문서 최종본이며, 각자가 frontmatter를 갖는다. 본문 내용은 이 스킬 패키지가 관리한다.
+- `annotated/`의 문서는 지식 문서 최종본이며, 각자가 frontmatter를 갖는다. `raw/`는 원문 계보 보존용이며 라우팅 대상이 아니다.
 - ID, title, topics, applies_to 등 AI가 라우팅을 결정하는 데 쓰는 필드는 규칙을 통일해서 쓴다.
 
 ## 필수 필드

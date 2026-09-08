@@ -17,7 +17,8 @@ dba-knowledge/
 ├── retrieval-guide.md   # 조회 절차
 ├── metadata-schema.md   # frontmatter 규칙
 ├── document-index.md    # DBA-XXX ID 매핑표
-└── annotated/           # 지식 문서 38개 (frontmatter 포함, 읽기용)
+├── raw/                 # 원문 5개 (계보 보존용)
+└── annotated/           # 지식 문서 38개 (frontmatter 포함, 조회용)
 ```
 
 ## 조회 절차
@@ -32,4 +33,5 @@ dba-knowledge/
 
 - 답은 문서 본문에서 근거를 찾아 낸다. 추측으로 답하지 않는다.
 - ID는 `document-index.md` 기준이고 절대 변경하지 않는다.
-- `annotated/` 문서는 읽기 전용이다. 내용 수정은 저장소 관리자가 meta 문서를 통해 관리한다.
+- 질문에 답할 때는 `annotated/`만 읽고 `raw/`는 근거로 사용하지 않는다.
+- 문서 유지보수는 이 저장소의 `annotated/`, `document-index.md`, `knowledge-map.md`에 직접 반영한다.

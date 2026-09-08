@@ -11,10 +11,12 @@ dba-knowledge/
 ├── retrieval-guide.md   # 조회 절차
 ├── metadata-schema.md   # frontmatter 규칙
 ├── document-index.md    # DBA-XXX ID 매핑표 (38개)
-└── annotated/           # 지식 문서 38개
+├── raw/                 # 이관한 원문 5개
+└── annotated/           # 스킬용 지식 문서 38개
 ```
 
 문서 ID는 `DBA-001`부터 `DBA-038`, `document-index.md`와 1:1이다.
+`raw/`는 원문 계보를 보존하는 경로이며 실제 질문 라우팅에는 사용하지 않는다.
 
 ## 에이전트별 설치
 
@@ -35,6 +37,7 @@ dba-knowledge/
 
 ## 유지보수
 
-- 지식 문서(`annotated/`)는 읽기 전용이다.
+- `skills/dba-knowledge/`가 DBA 지식 베이스의 단일 원본이다. PEOPLO의 기존 사본과 동기화하지 않는다.
+- 질문에 답할 때는 `annotated/`를 읽기 전용으로 사용하고 `raw/`를 근거로 사용하지 않는다.
+- 스킬 문서를 추가하거나 갱신할 때는 `annotated/`에 직접 반영한다.
 - 새 문서 추가는 `metadata-schema.md`의 frontmatter 규칙을 따르고, `document-index.md`에 ID를 고정해 등록한다.
-- 문서를 수정하면 두 곳(PEOPLO repo의 학습 KB, 이 스킬 패키지)을 함께 갱신해야 한다.
