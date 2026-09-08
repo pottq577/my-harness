@@ -49,6 +49,7 @@ read_also:
   - DBA-002
   - DBA-018
   - DBA-034
+  - DBA-050
 
 summary: >
   JSON 컬럼의 장점인 스키마 유연성, 반정규화 조회 성능, 외부 응답 저장과,

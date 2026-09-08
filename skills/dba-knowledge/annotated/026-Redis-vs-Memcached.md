@@ -42,6 +42,12 @@ read_also:
   - DBA-025
   - DBA-027
 
+verified_at: 2026-09-09
+
+references:
+  - "https://redis.io/tutorials/what-is-redis/"
+  - "https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/latency/"
+
 summary: >
   캐시만 하는 용도에서는 진입비용이 낮고 단순한 Memcached가 맞을 수 있다는
   입장에서 Redis와 Memcached를 비교한다. 관리형 서비스까지 포함한 선택
@@ -82,12 +88,12 @@ GET, SET, DELETE. Memcached로 충분하다.
 ## 스레딩 모델
 
 이게 가장 과소평가되는 차이다.
-Redis는 싱글 스레드다. 명령어를 하나씩 순서대로 처리한다.
-이 설계 덕분에 락 없이 원자적 연산이 가능하다. 하지만 CPU 코어 하나만 쓴다.
+Redis의 주 명령 실행 경로는 단일 이벤트 루프에서 요청을 순서대로 처리한다.
+이 설계 덕분에 공유 데이터 구조의 락 경합을 줄이고 명령 단위 원자성을 제공한다.
 Memcached는 멀티스레드다. 여러 코어를 동시에 활용한다.
 단순 GET/SET 연산을 여러 스레드가 병렬로 처리한다.
 vCPU 4코어 인스턴스에서 단순 캐시 룩업만 한다면 Memcached가 Redis보다 처리량이 높다.
-Redis 7.0부터 I/O 스레딩이 추가됐지만 명령어 처리 자체는 여전히 싱글 스레드다.
+Redis 6.0부터 네트워크 읽기와 쓰기를 I/O 스레드로 분산할 수 있지만 주 명령 실행 경로는 순차 처리된다.
 
 ## 메모리 효율
 

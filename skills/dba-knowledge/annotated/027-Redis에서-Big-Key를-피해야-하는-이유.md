@@ -23,6 +23,9 @@ code_signals:
   - "HSET"
   - "memory usage"
   - "redis-cli --bigkeys"
+  - "redis-cli --memkeys"
+  - "redis-cli --keystats"
+  - "UNLINK"
   - "GETRANGE"
   - "IDLE"
 
@@ -32,7 +35,7 @@ applies_to:
 
 risk_signals:
   - 하나의 key에 거대한 list를 전부 저장
-  - 빅 키가 동시 요청을 몰아 단일 스레드에서 블로킹
+  - 큰 명령 하나가 이벤트 루프의 다른 요청 처리를 지연
   - hot key가 샤드 하나로 트래픽 집중
   - 메모리 절약을 위해 비트나 바이트 연산 과다
 
@@ -45,9 +48,20 @@ read_also:
   - DBA-026
   - DBA-025
 
+source_sections:
+  - "raw/4.md:220-556"
+  - "raw/7.md:463-끝 (축약 중복)"
+
+verified_at: 2026-09-09
+
+references:
+  - "https://redis.io/docs/latest/develop/tools/cli/"
+  - "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WorkingWithRedis.html"
+  - "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/BestPractices.Clients.Redis.Connections.html"
+
 summary: >
-  빅 키 하나가 Redis 단일 스레드 아키텍처에서 모든 클라이언트를 블로킹하는
-  지점이 되고, hot key가 샤드 하나에 부하를 몰아가는 문제를 다룬다.
+  빅 키 하나가 Redis 명령 처리 경로를 오래 점유하고 hot key가 샤드 하나에
+  부하를 몰아가는 문제를 다룬다.
   빅 키를 키-밸류 스플리팅, 해시로 저장, list 샤딩, 모듈 사용과 같은
   방식으로 피하는 방법을 제시한다.
 ---
@@ -177,8 +191,10 @@ redis-cli -h <host> -p 6379 --bigkeys
 MEMORY USAGE mykey 의심되는 키가 있을 때 확인용.
 
 [redis-cli --memkeys]
-Redis 7.0부터 지원.
 SCAN + MEMORY USAGE를 조합해서 전체 키를 크기순으로 보여준다.
+
+[redis-cli --keystats]
+키 크기와 길이 분포를 함께 확인한다. 사용 중인 redis-cli 버전에서 지원 여부와 옵션을 확인한다.
 
 [OBJECT ENCODING / DEBUG OBJECT]
 키의 내부 인코딩과 직렬화 크기를 확인.

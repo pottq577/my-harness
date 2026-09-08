@@ -47,6 +47,10 @@ read_also:
   - DBA-011
   - DBA-005
 
+source_sections:
+  - "raw/3.md:1624-끝"
+  - "raw/6.md:3-221 (표현 차이가 있는 중복)"
+
 summary: >
   OLTP와 OLAP의 저장 구조 차이를 통해 행 단위 RDBMS가 분석 쿼리에
   취약한 이유를 설명한다. 컬럼형 저장과 파티셔닝 프루닝, 수직/수평 확장의

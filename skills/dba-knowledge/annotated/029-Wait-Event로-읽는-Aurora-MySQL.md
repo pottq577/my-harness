@@ -24,6 +24,7 @@ code_signals:
   - "wait/io"
   - "Using filesort"
   - "sync/io/"
+  - "CloudWatch Database Insights"
 
 applies_to:
   - monitoring
@@ -44,6 +45,15 @@ read_also:
   - DBA-008
   - DBA-032
   - DBA-009
+  - DBA-043
+
+source_sections:
+  - "raw/2.md:1069-1180"
+
+verified_at: 2026-09-09
+
+references:
+  - "https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.Enabling.html"
 
 summary: >
   대시보드의 전체 CPU/IO 지표가 아닌 'wait event'라는 DB 내부의 관찰
@@ -56,7 +66,8 @@ summary: >
 Aurora MySQL이 느려졌다.
 CPU는 여유 있고 메모리도 괜찮은데 쿼리가 끝나지 않는다.
 이럴 때 봐야 하는 게 Wait Event다. DB가 지금 뭘 기다리고 있는지.
-Performance Insights를 열면 상위 Wait가 나온다.
+CloudWatch Database Insights에서 DB Load와 상위 Wait를 확인한다.
+기존 Performance Insights 콘솔 경험은 2026-07-31에 종료됐지만 Performance Insights API는 계속 제공된다.
 근데 이름만 봐서는 뭔 소린지 모른다.
 증상별로 어떤 Wait Event가 뜨는지.
 그걸 알면 원인과 대응이 동시에 보인다.
@@ -66,7 +77,7 @@ Performance Insights를 열면 상위 Wait가 나온다.
 쿼리가 실행되는 동안 DB는 항상 뭔가를 기다린다.
 디스크를 읽거나, 락을 잡거나, 네트워크로 결과를 보내거나.
 그 "기다림"을 분류해서 이름을 붙인 게 Wait Event다.
-Performance Schema가 수집하고 Performance Insights가 시각화한다.
+Performance Schema가 수집하고 CloudWatch Database Insights가 DB Load와 대기를 시각화한다.
 CPU 사용률만 보면 병목의 절반을 놓친다.
 Wait Event를 봐야 진짜 느린 이유가 보인다.
 
@@ -137,7 +148,7 @@ CPU를 많이 쓴다는 건 쿼리가 무거운 연산을 하고 있다는 뜻�
 인덱스로 정렬을 대체하거나, 서브쿼리를 풀거나, 불필요한 DISTINCT를 제거하거나.
 CPU가 바쁜 건 쿼리가 비효율적이라는 신호다.
 
-## 실전: Performance Insights에서 읽는 법
+## 실전: CloudWatch Database Insights에서 읽는 법
 
 PI를 열면 상위 5개 Wait가 보인다. 이걸 읽는 순서가 있다.
 
