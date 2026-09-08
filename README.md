@@ -12,14 +12,14 @@ my-harness/
 ├── AGENTS.md       # AGENTS 규격 에이전트(Codex, opencode) 진입점
 ├── CLAUDE.md       # Claude Code 진입점
 └── skills/
-    └── dba-knowledge/    # DBA 지식 베이스 스킬 (38개 문서)
+    └── dba-knowledge/    # DBA 지식 베이스 스킬 (55개 문서)
 ```
 
 ## 스킬 목록
 
 | 스킬                    | 설명                            | 설치 경로                                   |
 | ----------------------- | ------------------------------- | ------------------------------------------- |
-| `skills/dba-knowledge/` | DB 설계·운영 지식 베이스 라우팅 | `~/.claude/skills/`, `~/.agents/skills/` 등 |
+| `skills/dba-knowledge/` | DB 설계와 운영 지식 베이스 라우팅 | `~/.claude/skills/`, `~/.agents/skills/` 등 |
 
 ## 설치 방법
 
