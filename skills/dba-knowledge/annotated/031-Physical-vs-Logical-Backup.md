@@ -1,6 +1,6 @@
 ---
 id: DBA-031
-title: Physical vs Logical Backup: 백업이 빠르면 복구는 느리다
+title: "Physical vs Logical Backup: 백업이 빠르면 복구는 느리다"
 status: stable
 
 topics:

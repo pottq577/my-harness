@@ -1,6 +1,6 @@
 ---
 id: DBA-009
-title: 대용량 SELECT의 기술: 1억 건에서 원하는 데이터를 꺼내는 법
+title: "대용량 SELECT의 기술: 1억 건에서 원하는 데이터를 꺼내는 법"
 status: stable
 
 topics:

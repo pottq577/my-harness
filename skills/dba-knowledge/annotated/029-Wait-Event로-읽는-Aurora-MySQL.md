@@ -1,6 +1,6 @@
 ---
 id: DBA-029
-title: Wait Event로 읽는 Aurora MySQL: 느릴 때 진짜 원인을 찾는 법
+title: "Wait Event로 읽는 Aurora MySQL: 느릴 때 진짜 원인을 찾는 법"
 status: stable
 
 topics:

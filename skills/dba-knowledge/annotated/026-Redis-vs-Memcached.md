@@ -1,6 +1,6 @@
 ---
 id: DBA-026
-title: Redis vs Memcached: 캐시만 할 거면 Memcached가 맞다
+title: "Redis vs Memcached: 캐시만 할 거면 Memcached가 맞다"
 status: stable
 
 topics:

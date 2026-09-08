@@ -1,6 +1,6 @@
 ---
 id: DBA-015
-title: Undo Log vs Redo Log: 되돌리는 기록과 다시 쓰는 기록
+title: "Undo Log vs Redo Log: 되돌리는 기록과 다시 쓰는 기록"
 status: stable
 
 topics:

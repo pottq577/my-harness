@@ -1,6 +1,6 @@
 ---
 id: DBA-001
-title: NULL을 이해한다는 것: WHERE a != 1 이 NULL을 빠뜨리는 이유
+title: "NULL을 이해한다는 것: WHERE a != 1 이 NULL을 빠뜨리는 이유"
 status: stable
 
 topics:

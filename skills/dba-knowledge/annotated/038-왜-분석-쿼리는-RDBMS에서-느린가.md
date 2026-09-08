@@ -1,6 +1,6 @@
 ---
 id: DBA-038
-title: 왜 분석 쿼리는 RDBMS에서 느린가: Athena, Snowflake, BigQuery의 구조
+title: "왜 분석 쿼리는 RDBMS에서 느린가: Athena, Snowflake, BigQuery의 구조"
 status: stable
 
 topics:

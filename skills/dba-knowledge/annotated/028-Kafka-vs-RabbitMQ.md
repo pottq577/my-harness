@@ -1,6 +1,6 @@
 ---
 id: DBA-028
-title: Kafka vs RabbitMQ: 메시지를 보내는 것과 로그를 남기는 것의 차이
+title: "Kafka vs RabbitMQ: 메시지를 보내는 것과 로그를 남기는 것의 차이"
 status: stable
 
 topics:

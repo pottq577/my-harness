@@ -1,6 +1,6 @@
 ---
 id: DBA-004
-title: Collation의 실체: 같은 글자가 다르게 정렬되는 이유
+title: "Collation의 실체: 같은 글자가 다르게 정렬되는 이유"
 status: stable
 
 topics:

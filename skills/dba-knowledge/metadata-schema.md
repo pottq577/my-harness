@@ -35,7 +35,7 @@ read_also:
 | 필드           | 작성 방식                                               |
 | -------------- | ------------------------------------------------------- |
 | `id`           | `DBA-001` 형식. `document-index.md`와 1:1. 변경 금지    |
-| `title`        | 본문 H1과 동일. 반드시 일치시킨다                       |
+| `title`        | 본문 H1과 동일. 큰따옴표로 감싼다                       |
 | `status`       | `draft`, `stable`, `needs-review`, `deprecated` 중 하나 |
 | `topics`       | 짧은 영문 태그. 소문자, 하이픈 구분                     |
 | `triggers`     | 사람이 질문할 법한 실제 표현이나 상황                   |
@@ -85,7 +85,7 @@ read_also:
 ```markdown
 ---
 id: DBA-001
-title: NULL을 이해한다는 것: WHERE a != 1 이 NULL을 빠뜨리는 이유
+title: "NULL을 이해한다는 것: WHERE a != 1 이 NULL을 빠뜨리는 이유"
 status: stable
 
 topics:

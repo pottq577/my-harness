@@ -1,6 +1,6 @@
 ---
 id: DBA-003
-title: DB에서 JSON을 쓴다는 것: 장점, 단점, 가이드라인
+title: "DB에서 JSON을 쓴다는 것: 장점, 단점, 가이드라인"
 status: stable
 
 topics:

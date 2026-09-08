@@ -1,6 +1,6 @@
 ---
 id: DBA-027
-title: Redis에서 Big Key를 피해야 하는 이유
+title: "Redis에서 Big Key를 피해야 하는 이유"
 status: stable
 
 topics:
