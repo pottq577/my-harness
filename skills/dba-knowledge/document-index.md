@@ -1,6 +1,6 @@
 # DBA Knowledge Base 문서 인덱스
 
-`annotated/` 아래 55개 문서의 파일 번호와 문서 ID를 1:1로 고정한 매핑표다.
+`annotated/` 아래 72개 문서의 파일 번호와 문서 ID를 1:1로 고정한 매핑표다.
 ID는 이후 절대 변경하지 않는다.
 
 | id      | file                                                                     | title                                                                                        |
@@ -59,10 +59,27 @@ ID는 이후 절대 변경하지 않는다.
 | DBA-052 | annotated/052-RocksDB.md                                                  | RocksDB: DB를 만드는 사람들이 선택한 엔진                                                   |
 | DBA-053 | annotated/053-Supabase에서-자체-DB로-전환하기.md                          | Supabase에서 자체 DB로 넘어가야 할 때는 언제인가?                                           |
 | DBA-054 | annotated/054-MongoDB-설계-패턴.md                                       | MongoDB 설계 패턴: 도메인이 구조를 결정한다                                                 |
+| DBA-055 | annotated/055-GC가-데이터베이스를-멈추는-순간.md                          | GC가 데이터베이스를 멈추는 순간: Stop the World의 실체                                     |
+| DBA-056 | annotated/056-락을-이해한다는-것.md                                       | 락을 이해한다는 것: 데드락, 락 대기, 그리고 면접에서의 깊이                               |
+| DBA-057 | annotated/057-DocumentDB-쿼리-플래너.md                                   | DocumentDB 쿼리 플래너: v1과 v2는 왜 이렇게 다른가                                         |
+| DBA-058 | annotated/058-Flyway-vs-Liquibase.md                                      | Flyway vs Liquibase: DB 마이그레이션, 단순함이 답인가                                     |
+| DBA-059 | annotated/059-빅오-표기법.md                                              | 빅오 표기법: 코드의 속도를 말하는 언어                                                     |
+| DBA-060 | annotated/060-마이크로서비스-전환이-DB에-주는-영향.md                      | 마이크로서비스 전환이 DB에 주는 영향: 모놀리스를 쪼개면 JOIN이 사라진다                   |
+| DBA-061 | annotated/061-B-Tree-vs-LSM-Tree.md                                       | B-Tree vs LSM-Tree: 읽기를 위한 구조와 쓰기를 위한 구조                                   |
+| DBA-062 | annotated/062-쿼리-플래너의-머릿속.md                                     | 쿼리 플래너의 머릿속: 데이터베이스는 어떻게 길을 고르는가                                 |
+| DBA-063 | annotated/063-알림-시스템과-DB.md                                         | 알림 시스템과 DB: 보내는 건 쉬운데 안 보내는 게 어렵다                                    |
+| DBA-064 | annotated/064-낙관적-락-vs-비관적-락.md                                   | Optimistic Lock vs Pessimistic Lock: 충돌을 막느냐, 충돌을 받아들이느냐                  |
+| DBA-065 | annotated/065-커넥션-풀이-필요한-진짜-이유.md                              | 커넥션 풀이 필요한 진짜 이유: HikariCP, pgBouncer, 그리고 적정 사이즈                     |
+| DBA-066 | annotated/066-무중단-스키마-변경.md                                       | 무중단 스키마 변경: ALTER TABLE이 서비스를 멈추는 이유                                    |
+| DBA-067 | annotated/067-Aurora-MySQL-failover.md                                    | Aurora MySQL failover 62초의 비밀: JDBC URL 한 줄이 만드는 차이                           |
+| DBA-068 | annotated/068-Upsert.md                                                   | 당신의 Upsert는 진짜로 쓰고 있는가                                                         |
+| DBA-069 | annotated/069-채팅과-DB.md                                                | 채팅과 DB: 읽었는지 안 읽었는지, 그게 이렇게 어려운 일                                     |
+| DBA-070 | annotated/070-예약-시스템과-DB.md                                         | 예약 시스템과 DB: 같은 시간에 두 명이 예약하면 생기는 일                                  |
+| DBA-071 | annotated/071-ID를-만든다는-것.md                                         | ID를 만든다는 것: AUTO_INCREMENT가 1, 2, 3이 아닌 이유                                    |
 | DBA-999 | annotated/999-DB-전문가의-성장과-커뮤니케이션.md                          | DB 전문가의 성장과 커뮤니케이션: 학습, 면접, 이력서                                         |
 
 ## 안내
 
-- 55개 문서는 모두 `annotated/` 아래에 있고 frontmatter를 갖는다.
+- 72개 문서는 모두 `annotated/` 아래에 있고 frontmatter를 갖는다.
 - AI가 문서를 읽을 때는 frontmatter가 있는 `annotated/`의 파일을 우선 읽는다.
 - 문서를 검색할 때는 `knowledge-map.md`의 라우팅을 먼저 따른다.
