@@ -102,22 +102,36 @@ def parse_document_index(text):
 
 
 def parse_knowledge_map(text):
-    """knowledge-map.md의 주 라우팅 섹션에서 문서 ID 목록을 추출한다."""
-    ids = []
+    """knowledge-map.md의 주 라우팅 섹션에서 (ID, 링크 경로) 목록을 추출한다."""
+    rows = []
     for line in text.splitlines():
         match = MAP_ROW_PATTERN.match(line)
         if match:
-            ids.append(match.group(1))
-    return ids
+            rows.append((match.group(1), match.group(2)))
+    return rows
 
 
 def parse_applies_to_values(text):
-    """metadata-schema.md의 applies_to 어휘 표에서 허용값 집합을 추출한다."""
+    """metadata-schema.md의 ## applies_to 어휘 섹션에서만 허용값을 추출한다.
+
+    해당 section heading부터 다음 같은 수준의 ## heading 또는 파일 끝까지
+    읽는다. 섹션을 찾지 못하면 빈 집합을 반환하고 임의의 fallback 값은
+    허용하지 않는다.
+    """
     values = set()
-    for line in text.splitlines():
-        match = re.match(r"^\|\s*`([a-z][a-z-]*)`\s*\|", line)
-        if match:
-            values.add(match.group(1))
+    lines = text.splitlines()
+    in_section = False
+    for line in lines:
+        if re.match(r"^##\s", line):
+            if not in_section:
+                in_section = bool(re.match(r"^##\s+applies_to\s+어휘\s*$", line))
+            else:
+                break
+            continue
+        if in_section:
+            match = re.match(r"^\|\s*`([a-z][a-z-]*)`\s*\|", line)
+            if match:
+                values.add(match.group(1))
     return values
 
 
@@ -151,7 +165,8 @@ def validate_skill(skill_dir=None):
 
     allowed_applies = parse_applies_to_values(schema_text) if schema_text else set()
     index_rows = parse_document_index(index_text) if index_text else []
-    map_ids = parse_knowledge_map(map_text) if map_text else []
+    map_rows = parse_knowledge_map(map_text) if map_text else []
+    map_ids = [row[0] for row in map_rows]
 
     # 문서 수집
     docs = []  # (relative_path, frontmatter | None)
@@ -203,10 +218,13 @@ def validate_skill(skill_dir=None):
                 f"{rel}: status 허용값 아님 (draft|stable|needs-review|deprecated): {status!r}"
             )
 
+        for field in ("topics", "triggers", "applies_to"):
+            value = fm.get(field)
+            if not isinstance(value, list) or not value:
+                errors.append(f"{rel}: {field}는 비어 있지 않은 목록이어야 함")
+
         applies = fm.get("applies_to")
-        if not isinstance(applies, list) or not applies:
-            errors.append(f"{rel}: applies_to는 비어 있지 않은 목록이어야 함")
-        else:
+        if isinstance(applies, list) and applies:
             for value in applies:
                 if value not in allowed_applies:
                     errors.append(f"{rel}: applies_to 허용값 아님: {value}")
@@ -267,6 +285,21 @@ def validate_skill(skill_dir=None):
 
         for doc_id in sorted(set(map_counts) - all_ids):
             errors.append(f"{doc_id}: knowledge-map.md에 있지만 존재하지 않는 ID")
+
+        # 링크 대상 파일 존재와 frontmatter id 대조
+        for doc_id, link_path in map_rows:
+            target = skill_dir / link_path
+            if not target.is_file():
+                errors.append(
+                    f"{doc_id}: knowledge-map.md 링크 대상 파일이 실제로 없음: {link_path}"
+                )
+                continue
+            target_fm = parse_frontmatter(target.read_text(encoding="utf-8"))
+            target_id = target_fm.get("id") if target_fm else None
+            if target_id != doc_id:
+                errors.append(
+                    f"{doc_id}: knowledge-map.md의 ID와 링크 대상 문서 ID({target_id})가 다름: {link_path}"
+                )
 
     return errors
 
