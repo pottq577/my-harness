@@ -20,6 +20,7 @@ dba-knowledge/
 ├── metadata-schema.md   # frontmatter 규칙
 ├── document-index.md    # DBA-XXX ID 매핑표 (72개)
 ├── raw/                 # 원문 8개, 변경하지 않는 계보 자료
+├── scripts/             # 구조 정합성 validator
 └── annotated/           # 스킬용 지식 문서 72개
 ```
 
@@ -46,8 +47,30 @@ dba-knowledge/
 
 ## 유지보수
 
+런타임 조회와 유지보수 작업은 다르다.
+
+- 일반 질문에 답할 때는 `annotated/`를 읽기 전용으로 사용하고 `raw/`를 근거로 사용하지 않는다.
+- 스킬 유지보수(문서 추가, 메타데이터 변경)를 할 때는 `annotated/`, `document-index.md`, `knowledge-map.md`, `metadata-schema.md`를 함께 갱신한다.
+
+규칙:
+
 - `skills/dba-knowledge/`가 DBA 지식 베이스의 단일 원본이다. PEOPLO의 기존 사본과 동기화하지 않는다.
-- 질문에 답할 때는 `annotated/`를 읽기 전용으로 사용하고 `raw/`를 근거로 사용하지 않는다.
-- 스킬 문서를 추가하거나 갱신할 때는 `annotated/`에 직접 반영한다.
 - 새 문서 추가는 `metadata-schema.md`의 frontmatter 규칙을 따르고, `document-index.md`에 ID를 고정해 등록한다.
 - 버전, 가격, 제한과 지원 기능은 `verified_at`과 공식 `references`를 기록하고 답변 시점에 다시 확인한다.
+
+### 구조 정합성 검증
+
+문서를 추가하거나 메타데이터(지도, 인덱스 포함)를 변경한 뒤에는 구조 정합성 validator를 실행한다. validator는 지식 내용의 옳고 그름을 평가하지 않고 frontmatter, 인덱스, 지도의 정합성만 검사한다.
+
+```bash
+python skills/dba-knowledge/scripts/validate.py
+```
+
+- 정상이면 exit code `0`이고 아무것도 출력하지 않는다.
+- 구조 오류가 있으면 파일/ID/실패 이유를 출력하고 non-zero를 반환한다.
+
+validator 테스트는 저장소 루트에서 실행한다.
+
+```bash
+python -m unittest discover
+```
